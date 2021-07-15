@@ -1,5 +1,5 @@
 # ops-cicd
-# a template project for k8s cicd projects
+## a template project for k8s cicd projects
 # based on GitOps 
 
 This repository contains environment configuration templates and build/deploy scripts
