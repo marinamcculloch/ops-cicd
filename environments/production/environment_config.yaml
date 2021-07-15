@@ -1,0 +1,8 @@
+# ENVIRONMENT #
+auto_deploy_env: false
+shared_environment: production
+overwrite_all_module_version: production
+
+# KEYCLOAK #
+shared_auth_group: prod
+shared_auth_host: localhost:8080/auth

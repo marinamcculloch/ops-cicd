@@ -1,0 +1,9 @@
+---
+# 07/15/2021 18:07:03
+!include build.yaml
+---
+!include build-permissions.yaml
+---
+!include deployments/cicd-k8s-app.yaml
+---
+!include deployments/cicd-k8s-app-permissions.yaml

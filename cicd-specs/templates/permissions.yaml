@@ -1,0 +1,51 @@
+version: 2
+deployment:
+  name: application
+
+deployment-permissions:
+- users: &users
+  - marinamcculloch
+  permissions:
+  - view
+  - edit
+- groups: &groups
+  - developers
+  roles: &roles
+  - logged-in
+  # - anonymous
+  permissions:
+  - view
+
+environment-permissions:
+- dev:
+  - users: *users
+    groups: *groups
+    permissions:
+    - view
+    - edit
+    - deploy
+  - roles: *roles
+    groups: *groups
+    permissions:
+    - view
+- uat:
+  - users: *users
+    groups: *groups
+    permissions:
+    - view
+    - edit
+    - deploy
+  - roles: *roles
+    groups: *groups
+    permissions:
+    - view
+- production:
+  - users: *users
+    permissions:
+    - view
+    - edit
+    - deploy
+  - roles: *roles
+    groups: *groups
+    permissions:
+    - view

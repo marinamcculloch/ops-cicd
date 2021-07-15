@@ -1,0 +1,25 @@
+tasks:
+- clean
+- artifact-download
+- script:
+    - |
+      cd $bamboo_working_subdirectory
+      /usr/bin/pwsh -c ./deploy.ps1
+requirements:
+- system.docker.executable
+docker:
+  image: docker.io/org/cicdinfra:latest
+  volumes:
+    ${bamboo.working.directory}: ${bamboo.working.directory}
+    ${bamboo.tmp.directory}: ${bamboo.tmp.directory}
+  use-default-volumes: false
+triggers:
+- build-success
+notifications:
+- events:
+  - deployment-failed
+  - deployment-finished
+  - deployment-started-and-finished
+  recipients:
+  - users:
+    - marinamcculloch

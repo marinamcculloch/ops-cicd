@@ -1,0 +1,110 @@
+version: 2
+deployment:
+  name: cicd-k8s-app
+  source-plan: PROJECTKEY-PLANKEY
+release-naming:
+  next-version-name: Release-${bamboo.buildResultKey}
+  applies-to-branches: true
+environments:
+- dev - dev_1
+- dev - dev_2
+- production - prod_1
+- production - prod_2
+- uat - uat_1
+- uat - uat_2
+- uat - uat_3
+dev - dev_1:
+  <<: &o0
+    tasks:
+    - clean
+    - artifact-download
+    - script:
+      - |
+        cd $bamboo_working_subdirectory
+        /usr/bin/pwsh -c ./deploy.ps1
+    requirements:
+    - system.docker.executable
+    docker:
+      image: docker.io/org/cicdinfra:latest
+      volumes:
+        ${bamboo.working.directory}: ${bamboo.working.directory}
+        ${bamboo.tmp.directory}: ${bamboo.tmp.directory}
+      use-default-volumes: false
+    triggers:
+    - build-success
+    notifications:
+    - events:
+      - deployment-failed
+      - deployment-finished
+      - deployment-started-and-finished
+      recipients:
+      - users:
+        - marinamcculloch
+  variables:
+    working_subdirectory: environments/dev/dev_1
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success
+dev - dev_2:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/dev/dev_2
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success
+production - prod_1:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/production/prod_1
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success:
+      branch: production
+production - prod_2:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/production/prod_2
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success:
+      branch: production
+uat - uat_1:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/uat/uat_1
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success:
+      branch: uat
+uat - uat_2:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/uat/uat_2
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success:
+      branch: uat
+uat - uat_3:
+  <<: *o0
+  variables:
+    working_subdirectory: environments/uat/uat_3
+    aws_access_key_id: 
+    secret_aws_secret_access_key: 
+    secret_k8s_token: 
+  triggers:
+  - build-success:
+      branch: uat
+
+

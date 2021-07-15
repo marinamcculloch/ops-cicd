@@ -1,0 +1,12 @@
+version: 2
+deployment:
+  # The second value gets overriden
+  name: application
+  source-plan: PROJECTKEY-PLANKEY
+
+release-naming:
+  # Using buildResultKey to ensure its unique accross branhces (instead of just ${bamboo.buildNumber} or incremental sequence)
+  next-version-name: Release-${bamboo.buildResultKey}
+  applies-to-branches: true
+
+environments: []

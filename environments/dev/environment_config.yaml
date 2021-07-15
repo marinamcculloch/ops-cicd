@@ -1,0 +1,21 @@
+# ENVIRONMENT #
+auto_deploy_env: false
+shared_environment: dev
+shared_cluster_id: cluster-id
+shared_cluster_fqdn: cluster-fqdn
+
+# COMPONENTS #
+postgres_enable: true
+reactjsapp_enable: true
+pythonapp_enable: true
+
+# RELOADER #
+reloader_enable: true
+
+# RANCHER #
+shared_rancher_cluster_id: c-xxxx
+shared_rancher_project_id: p-xxxx
+
+# AUTH #
+shared_auth_host: localhost:8080/auth
+shared_auth_group: dev-auth 

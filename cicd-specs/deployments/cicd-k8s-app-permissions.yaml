@@ -1,0 +1,79 @@
+version: 2
+deployment:
+  name: cicd-k8s-app
+deployment-permissions:
+- users:
+  - marinamcculloch
+  permissions:
+  - view
+  - edit
+- groups:
+  - developers
+  roles:
+  - logged-in
+  permissions:
+  - view
+environment-permissions:
+- dev - dev_1:
+  - &o0
+    users:
+    - marinamcculloch
+    groups:
+    - developers
+    permissions:
+    - view
+    - edit
+    - deploy
+  - &o1
+    roles:
+    - logged-in
+    groups:
+    - developers
+    permissions:
+    - view
+- dev - dev_2:
+  - *o0
+  - *o1
+- production - prod_1:
+  - &o2
+    users:
+    - marinamcculloch
+    permissions:
+    - view
+    - edit
+    - deploy
+  - &o3
+    roles:
+    - logged-in
+    groups:
+    - developers
+    permissions:
+    - view
+- production - prod_2:
+  - *o2
+  - *o3
+- uat - uat_1:
+  - &o4
+    users:
+    - marinamcculloch
+    groups:
+    - developers
+    permissions:
+    - view
+    - edit
+    - deploy
+  - &o5
+    roles:
+    - logged-in
+    groups:
+    - developers
+    permissions:
+    - view
+- uat - uat_2:
+  - *o4
+  - *o5
+- uat - uat_3:
+  - *o4
+  - *o5
+
+

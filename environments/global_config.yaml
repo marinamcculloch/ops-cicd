@@ -1,0 +1,24 @@
+auto_deploy_env: false
+_shared_enable: true
+
+# MODULE VERSIONS
+# * Can be moved to environment_config.yaml or namespace.yaml 
+# * to overwrite module versions at lower level 
+
+# ! overwrite_all_module_version: v1.0 means that v1.0 version 
+# is forced to all modules
+overwrite_all_module_version: v1.0
+_shared_module_version: v1.0
+postgres_module_version: v1.0
+reactjsapp_module_version: v1.0
+pythonapp_module_version: v1.0
+
+# ENVIRONMENT #
+shared_stack: ops-cicd
+shared_aws_region: eu-west-1
+
+# AUTH #
+shared_auth_client: auth-client
+
+# K8S #
+secret_k8s_auth_token: auth-token

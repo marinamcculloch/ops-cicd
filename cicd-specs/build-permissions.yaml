@@ -1,0 +1,21 @@
+# https://docs.atlassian.com/bamboo-specs-docs/6.9.2/specs.html?yaml#plan-permissions
+version: 2
+plan: PROJECTKEY-PLANKEY
+
+plan-permissions:
+  - roles:
+    - logged-in
+    permissions: view
+  - users:
+    - marinamcculloch
+    permissions:
+    - view
+    - edit
+    - build
+    - clone
+    - admin
+  - groups:
+    - developers
+    permissions:
+    - view
+    - build

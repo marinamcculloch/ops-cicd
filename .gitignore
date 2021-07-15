@@ -1,0 +1,22 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# Module directory
+.terraform/
+terraform.tfstate.d/
+.vscode/
+target/
+.settings/
+.idea
+*.iml
+
+# Environment
+
+environments/*/*/*/*
+!environments/**/namespace.yaml
+environments/**/*.ps1
+environments/**/script-parameters.yaml
+environments/**/*.json
+.project
+

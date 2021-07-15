@@ -1,0 +1,22 @@
+auto_deploy_env: true
+shared_namespace: uat_1
+
+# COMPONENTS #
+reactjsapp_enable: true
+pythonapp_enable: true
+
+# VERSIONS #
+reactjsapp_image_version: v1.0
+reactjsapp_automated_image_version: true
+
+pythonapp_image_version: v1.0
+pythonapp_automated_image_version: true
+
+# AUTH #
+shared_auth_host: localhost:8080/auth
+
+# COMPONENTS #
+pythonapp_replicas: 2
+
+# RELOADER #
+reloader_enable: true
